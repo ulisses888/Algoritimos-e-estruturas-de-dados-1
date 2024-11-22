@@ -22,6 +22,5 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
 
     }
  
-
-    
+// TWO SUN LEETCODE
 // UMA DAS PIORES SOLUÇÕES JÁ FEITAS

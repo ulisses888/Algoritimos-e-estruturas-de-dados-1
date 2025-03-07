@@ -35,12 +35,25 @@ struct TreeNode* subtreeWithAllDeepest(struct TreeNode* root) {
     // retornar a raiz
     // como calcular a altura?
 
-
-
     if(altura == 0){
         return root;
     }
     while(root->left != NULL){
+        return subtreeWithAllDeepest(subarvore->left);
+        distanciaPercorrida++;
+    }
+    while(root->right != NULL){
+        return subtreeWithAllDeepest(subarvore->right);
+        distanciaPercorrida++;
+    }
+    if(subarvore->right == NULL && subarvore->left == NULL && distanciaPercorrida != altura){
+        return subtreeWithAllDeepest(root->right);
+    } else {
+        return root;
+    }
+
+
+    /*while(root->left != NULL){
         return subtreeWithAllDeepest(root->left);
         distanciaPercorrida++;
     }
@@ -48,10 +61,11 @@ struct TreeNode* subtreeWithAllDeepest(struct TreeNode* root) {
         return subtreeWithAllDeepest(root->right);
         distanciaPercorrida++;
     }
+    printf("Distancia percorrida: %d",distanciaPercorrida);
     if(distanciaPercorrida == altura){   
     return root;
     } else {
         printf("deu ruim\n");
         return root;
-    }
+    }*/
 }

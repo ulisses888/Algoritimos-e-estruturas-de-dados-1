@@ -7,33 +7,39 @@
  * };
  */
 
-int calcularAltura(struct TreeNode* root){
-    if (root == NULL){
+int calcularAlturaArvore(struct TreeNode* root){
+    if(root == NULL){
         return 0;
+    }
+    int alturaEsq = calcularAlturaArvore(root->left);
+    int alturaDir = calcularAlturaArvore(root->right);
+
+    if(alturaDir > alturaEsq){
+        return alturaDir + 1;
     } else {
-        int alturaEsq = calcularAltura(root->left);
-        int alturaDir = calcularAltura(root->right);
-        if(alturaEsq > alturaDir){
-            return alturaEsq + 1;
-        } else {
-            return alturaDir + 1;
-        }
+        return alturaEsq + 1;
     }
 }
+
 
 struct TreeNode* subtreeWithAllDeepest(struct TreeNode* root) {
     if(root == NULL){
         return root;
     }
-    int alturaEsq = calcularAltura(root->left);
-    int alturaDir = calcularAltura(root->right);
 
-    if (alturaEsq == alturaDir) {
+    int alturaEsq = calcularAlturaArvore(root->left);
+    int alturaDir = calcularAlturaArvore(root->right);
+    
+    if(alturaEsq == alturaDir){
         return root;
     }
-    if(alturaEsq> alturaDir){
+    if(alturaEsq > alturaDir){
         return subtreeWithAllDeepest(root->left);
     } else {
         return subtreeWithAllDeepest(root->right);
     }
+     
+    
+
+    
 }
